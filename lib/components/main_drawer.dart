@@ -11,7 +11,7 @@ class MainDrawer extends StatelessWidget {
         label,
         style: const TextStyle(fontFamily: 'RobotoCondensed', fontSize: 20, fontWeight: FontWeight.bold),
       ),
-      onTap: () {},
+      onTap: onTap,
     );
   }
 
@@ -32,9 +32,10 @@ class MainDrawer extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 20),
-          _createItem(Icons.category, 'Categorias', () => Navigator.of(context).pushNamed(AppRoutes.home)),
-          //_createItem(Icons.restaurant, 'Refeições'),
-          _createItem(Icons.settings, 'Configuraçõe', () => Navigator.of(context).pushNamed(AppRoutes.settings)),
+          // pushReplacementNamed faz com que a tela aberta substitua a tela que foi aberta por último na pilha de telas
+          _createItem(Icons.category, 'Categorias', () => Navigator.of(context).pushReplacementNamed(AppRoutes.home)),
+          _createItem(Icons.settings, 'Configurações', () => Navigator.of(context).pushReplacementNamed(AppRoutes.settings)),
+          _createItem(Icons.question_mark, 'Tela não encontrada', () => Navigator.of(context).pushReplacementNamed("rota_tela_nao_existente")),
         ],
       ),
     );

@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 import '../models/meal.dart';
 
 class MealDetailScreen extends StatelessWidget {
-  const MealDetailScreen({Key? key}) : super(key: key);
+  final Function(Meal) setFavoriteMeal;
+
+  // ignore: use_key_in_widget_constructors
+  const MealDetailScreen({required this.setFavoriteMeal});
 
   @override
   Widget build(BuildContext context) {
@@ -96,6 +99,17 @@ class MealDetailScreen extends StatelessWidget {
             _stepsList(meal, context),
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          // método pop retira a tela da lista e permite a passagem
+          // de um parâmetro do tipo object, que pode ser qqr coisa
+          // do id da refeição ao objeto inteiro.
+          meal.favorite = !meal.favorite;
+          setFavoriteMeal(meal);
+        },
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        child: Icon(meal.favorite ? Icons.star : Icons.star_border_outlined),
       ),
     );
   }

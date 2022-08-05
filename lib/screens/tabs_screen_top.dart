@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import '../models/meal.dart';
 import 'categories_screen.dart';
 import 'favorite_screen.dart';
 
 class TabScreenTop extends StatelessWidget {
-  const TabScreenTop({Key? key}) : super(key: key);
+  final List<Meal> meals;
+
+  // ignore: use_key_in_widget_constructors
+  const TabScreenTop({required this.meals});
 
   @override
   Widget build(BuildContext context) {
@@ -23,10 +27,10 @@ class TabScreenTop extends StatelessWidget {
           ),
         ),
         // TabBarView deve ser preenchido com a tela nas mesmas posições da TabBat
-        body: const TabBarView(
+        body: TabBarView(
           children: [
-            CategoriesScreen(),
-            FavoriteScreen()
+            const CategoriesScreen(),
+            FavoriteScreen(meals: meals)
           ],
         ),
       ),

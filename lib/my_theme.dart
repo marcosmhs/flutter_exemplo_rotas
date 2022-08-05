@@ -5,7 +5,7 @@ class MyTheme {
     return ThemeData(
       primaryColor: Colors.red,
       // definição da cor primária (primarySwatch) e secundária (secundary))
-      colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.red).copyWith(secondary: Colors.amber),
+      colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.red).copyWith(secondary: Colors.amberAccent),
       // fonte principal
       fontFamily: 'Raleway',
       // cor de fundo

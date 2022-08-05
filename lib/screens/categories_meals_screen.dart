@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:navegacao_telas/components/meal_item.dart';
 import 'package:navegacao_telas/models/category.dart';
-import 'package:navegacao_telas/dummy_data.dart';
+import 'package:navegacao_telas/models/meal.dart';
 
 class CategoriesMealsScreen extends StatelessWidget {
-  const CategoriesMealsScreen({Key? key}) : super(key: key);
+  final List<Meal> meals;
+
+  // ignore: use_key_in_widget_constructors
+  const CategoriesMealsScreen({required this.meals});
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +15,7 @@ class CategoriesMealsScreen extends StatelessWidget {
     final category = ModalRoute.of(context)?.settings.arguments as Category;
 
     // retorna todas as refeições da categoria base
-    final categoryMeals = dummyMeals.where((meal) {
+    final categoryMeals = meals.where((meal) {
       return meal.categories.contains(category.id);
     }).toList();
 

@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import '../models/meal.dart';
 import 'categories_screen.dart';
 import 'favorite_screen.dart';
 import '../components/main_drawer.dart';
 
 class TabScreenBottom extends StatefulWidget {
-  const TabScreenBottom({Key? key}) : super(key: key);
+  final List<Meal> meals;
+
+  // ignore: use_key_in_widget_constructors
+  const TabScreenBottom({required this.meals});
 
   @override
   State<TabScreenBottom> createState() => _TabScreenBottomState();
@@ -12,17 +16,22 @@ class TabScreenBottom extends StatefulWidget {
 
 class _TabScreenBottomState extends State<TabScreenBottom> {
   int _selectedScreenIndex = 0;
+  List<Map<String, Object>> _screens = [];
 
-  final List<Map<String, Object>> _screens = [
-    {
-      'title': 'Categorias',
-      'screen': const CategoriesScreen()
-    },
-    {
-      'title': 'Meus Favoritos',
-      'screen': const FavoriteScreen()
-    },
-  ];
+  @override
+  void initState() {
+    super.initState();
+    _screens = [
+      {
+        'title': 'Categorias',
+        'screen': const CategoriesScreen()
+      },
+      {
+        'title': 'Meus Favoritos',
+        'screen': FavoriteScreen(meals: widget.meals)
+      }
+    ];
+  }
 
   _selectScreen(int index) {
     setState(() {
@@ -34,7 +43,6 @@ class _TabScreenBottomState extends State<TabScreenBottom> {
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 2,
-      initialIndex: 1,
       child: Scaffold(
         appBar: AppBar(
           title: Text(

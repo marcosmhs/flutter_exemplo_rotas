@@ -11,21 +11,22 @@ enum Cost {
 }
 
 class Meal {
-  final String id;
-  final List<String> categories;
-  final String title;
-  final String imageUrl;
-  final List<String> ingredients;
-  final List<String> steps;
-  final int duration;
-  final bool isGlutenFree;
-  final bool isLactoseFree;
-  final bool isVegan;
-  final bool isVegetarian;
-  final Complexity complexity;
-  final Cost cost;
+  String id;
+  List<String> categories;
+  String title;
+  String imageUrl;
+  List<String> ingredients;
+  List<String> steps;
+  int duration;
+  bool isGlutenFree;
+  bool isLactoseFree;
+  bool isVegan;
+  bool isVegetarian;
+  Complexity complexity;
+  Cost cost;
+  bool favorite;
 
-  const Meal({
+  Meal({
     required this.id,
     required this.categories,
     required this.title,
@@ -39,6 +40,7 @@ class Meal {
     required this.isVegetarian,
     required this.complexity,
     required this.cost,
+    required this.favorite,
   });
 
   String get complexityToText {
