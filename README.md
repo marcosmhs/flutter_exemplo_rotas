@@ -1,6 +1,6 @@
 # navegacao_telas
 
-A new Flutter project.
+Projeto com exemplos sobre criação de múltiplas telas e navegação entre elas.
 
 ## Getting Started
 
